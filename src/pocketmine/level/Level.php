@@ -788,6 +788,7 @@ class Level implements ChunkManager, Metadatable{
 		Timings::$tickEntityTimer->startTiming();
 		foreach($this->updateEntities as $id => $entity){
 			if($entity->closed or !$entity->onUpdate($currentTick)){
+				unset($this->entities[$id]);
 				unset($this->updateEntities[$id]);
 			}
 		}
